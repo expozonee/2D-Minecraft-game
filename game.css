@@ -80,9 +80,11 @@
 
 #tools-container {
   display: flex;
-  background-color: bisque;
-  width: 220px;
-  height: 60px;
+  justify-content: center;
+  align-items: center;
+  /* background-color: bisque; */
+  /* width: 220px; */
+  /* height: 60px; */
   gap: 2px;
 }
 
@@ -103,4 +105,48 @@
   width: 100%;
   height: 100%;
   --gap: 2px;
+}
+
+.tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  background-image: url(./assets/box.png);
+  background-size: cover;
+}
+
+.tools > * {
+  width: 60px;
+  height: 60px;
+  background-color: rgb(68, 68, 68);
+  border-radius: 10px;
+}
+
+#tools-container .tools {
+  flex-grow: 1;
+}
+
+.axe {
+  background-image: url(./assets/axe.png);
+  background-size: cover;
+}
+
+.shovel {
+  background-image: url(./assets/shovel.png);
+  background-size: cover;
+}
+
+.pickaxe {
+  background-image: url(./assets/pickaxe.png);
+  background-size: cover;
+}
+
+.spyglass {
+  background-image: url(./assets/spyglass.png);
+  background-size: cover;
 }
