@@ -6,51 +6,55 @@
   box-sizing: border-box;
 }
 
-[grass-type="grass1"] {
+body {
+  cursor: url(./assets/cursor.cur), auto;
+}
+
+.ground[grass-type="grass1"] {
   background-image: url(./assets/grass1.png);
 }
 
-[grass-type="grass2"] {
+.ground[grass-type="grass2"] {
   background-image: url(./assets/grass2.png);
 }
 
-[grass-type="grass3"] {
+.ground[grass-type="grass3"] {
   background-image: url(./assets/grass3.png);
 }
 
-[grass-type="grass4"] {
+.ground[grass-type="grass4"] {
   background-image: url(./assets/grass4.png);
 }
 
-[grass-type="grass5"] {
+.ground[grass-type="grass5"] {
   background-image: url(./assets/grass5.png);
 }
 
-[grass-type="grass6"] {
+.ground[grass-type="grass6"] {
   background-image: url(./assets/grass6.png);
 }
 
-[soil-type="soil1"] {
+.ground[soil-type="soil1"] {
   background-image: url(./assets/soil1.png);
 }
 
-[soil-type="soil2"] {
+.ground[soil-type="soil2"] {
   background-image: url(./assets/soil2.png);
 }
 
-[soil-type="soil3"] {
+.ground[soil-type="soil3"] {
   background-image: url(./assets/soil3.png);
 }
 
-[soil-type="soil4"] {
+.ground[soil-type="soil4"] {
   background-image: url(./assets/soil4.png);
 }
 
-[soil-type="soil5"] {
+.ground[soil-type="soil5"] {
   background-image: url(./assets/soil5.png);
 }
 
-[stone] {
+.stone {
   background-image: url(./assets/stone.jpg);
 }
 
@@ -88,11 +92,25 @@
   gap: 2px;
 }
 
+#items {
+  padding: 2rem;
+  border-radius: 5px;
+  background-color: rgb(68, 68, 68);
+  display: grid;
+  grid-template-columns: repeat(5, 75px);
+  grid-template-rows: repeat(3, 75px);
+  gap: 20px;
+}
+
 .fraction {
   display: grid;
   grid-template-rows: subgrid;
   grid-row: span 15;
   gap: var(--gap);
+}
+
+.fraction > *:hover {
+  border: 2px solid white;
 }
 
 .sky {
@@ -107,7 +125,7 @@
   --gap: 2px;
 }
 
-.tools {
+#tools {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,7 +138,7 @@
   background-size: cover;
 }
 
-.tools > * {
+#tools > * {
   width: 60px;
   height: 60px;
   background-color: rgb(68, 68, 68);
@@ -131,22 +149,22 @@
   flex-grow: 1;
 }
 
-.axe {
+#axe {
   background-image: url(./assets/axe.png);
   background-size: cover;
 }
 
-.shovel {
+#shovel {
   background-image: url(./assets/shovel.png);
   background-size: cover;
 }
 
-.pickaxe {
+#pickaxe {
   background-image: url(./assets/pickaxe.png);
   background-size: cover;
 }
 
-.spyglass {
+#spyglass {
   background-image: url(./assets/spyglass.png);
   background-size: cover;
 }

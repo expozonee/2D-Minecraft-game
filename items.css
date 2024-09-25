@@ -1,0 +1,74 @@
+#grass1 {
+  background-image: url(./assets/grass1.png);
+}
+
+#grass2 {
+  background-image: url(./assets/grass2.png);
+}
+
+#grass3 {
+  background-image: url(./assets/grass3.png);
+}
+
+#grass4 {
+  background-image: url(./assets/grass4.png);
+}
+
+#grass5 {
+  background-image: url(./assets/grass5.png);
+}
+
+#leaves {
+  background-image: url(./assets/leaves.png);
+}
+
+#soil1 {
+  background-image: url(./assets/soil1.png);
+}
+
+#soil2 {
+  background-image: url(./assets/soil2.png);
+}
+
+#soil3 {
+  background-image: url(./assets/soil3.png);
+}
+
+#soil4 {
+  background-image: url(./assets/soil4.png);
+}
+
+#soil5 {
+  background-image: url(./assets/soil5.png);
+}
+
+#stone {
+  background-image: url(./assets/Stone.jpg);
+}
+
+#wood {
+  background-image: url(./assets/wood.png);
+}
+
+.item {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: relative;
+}
+
+.item::after {
+  content: attr(count);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 1);
+  top: -15px;
+  right: -15px;
+  z-index: 1;
+}
