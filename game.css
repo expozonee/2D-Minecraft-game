@@ -59,6 +59,8 @@
   height: 100vh;
   background-color: rgb(18, 32, 32);
   display: flex;
+  flex-direction: column;
+  gap: 100px;
   justify-content: center;
   align-items: center;
 }
@@ -74,6 +76,14 @@
   display: grid;
   grid-template-columns: repeat(30, 40px);
   grid-template-rows: repeat(15, 40px);
+}
+
+#tools-container {
+  display: flex;
+  background-color: bisque;
+  width: 220px;
+  height: 60px;
+  gap: 2px;
 }
 
 .fraction {
