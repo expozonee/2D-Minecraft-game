@@ -1,0 +1,96 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+[grass-type="grass1"] {
+  background-image: url(./assets/grass1.png);
+}
+
+[grass-type="grass2"] {
+  background-image: url(./assets/grass2.png);
+}
+
+[grass-type="grass3"] {
+  background-image: url(./assets/grass3.png);
+}
+
+[grass-type="grass4"] {
+  background-image: url(./assets/grass4.png);
+}
+
+[grass-type="grass5"] {
+  background-image: url(./assets/grass5.png);
+}
+
+[grass-type="grass6"] {
+  background-image: url(./assets/grass6.png);
+}
+
+[soil-type="soil1"] {
+  background-image: url(./assets/soil1.png);
+}
+
+[soil-type="soil2"] {
+  background-image: url(./assets/soil2.png);
+}
+
+[soil-type="soil3"] {
+  background-image: url(./assets/soil3.png);
+}
+
+[soil-type="soil4"] {
+  background-image: url(./assets/soil4.png);
+}
+
+[soil-type="soil5"] {
+  background-image: url(./assets/soil5.png);
+}
+
+[stone] {
+  background-image: url(./assets/stone.jpg);
+}
+
+#main-container {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(18, 32, 32);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-container {
+  --columns: 30;
+  --rows: 15;
+  --gap: 0px;
+
+  /* width: calc(1200px + ((var(--columns) - 1) * var(--gap)));
+  height: calc(600px + ((var(--rows) - 1) * var(--gap))); */
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(30, 40px);
+  grid-template-rows: repeat(15, 40px);
+}
+
+.fraction {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 15;
+  gap: var(--gap);
+}
+
+.sky {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(156, 233, 233);
+}
+
+.ground {
+  width: 100%;
+  height: 100%;
+  --gap: 2px;
+}
