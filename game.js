@@ -27,10 +27,13 @@ box.addEventListener("click", () => {
 
 function resetGame() {
   gameContainer.innerHTML = OriginalgameContainer;
-
   items.forEach((item) => {
     item.setAttribute("count", "0");
   });
+  items.forEach((item) => {
+    itemsCounter[item.id] = 0;
+  });
+  removeEmptyItems();
 }
 
 resetGameButton.addEventListener("click", () => {
@@ -169,6 +172,7 @@ items.forEach((item) => {
 
 const emptyMessage = document.createElement("p");
 emptyMessage.textContent = "Start playing to have items!";
+emptyMessage.classList.add("highlightText");
 
 function removeEmptyItems() {
   if (Object.values(itemsCounter).every((value) => value === 0)) {

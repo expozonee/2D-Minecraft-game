@@ -25,3 +25,10 @@
 #items.empty.hide {
   display: none;
 }
+
+.highlightText {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+}
