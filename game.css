@@ -58,6 +58,14 @@ body {
   background-image: url(./assets/stone.jpg);
 }
 
+.tree.wood {
+  background-image: url(./assets/wood.png);
+}
+
+.tree.leaves {
+  background-image: url(./assets/leaves.png);
+}
+
 #main-container {
   width: 100%;
   height: 100vh;

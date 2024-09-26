@@ -1,18 +1,19 @@
 let selectedTool = null;
 let selectedItem = null;
+const gameContainer = document.querySelector("#game-container");
 const tiles = document.querySelectorAll(".fraction > *:not(.sky)");
 const tools = document.querySelectorAll("#tools > *");
 const items = document.querySelectorAll("#items > *");
-// let sky;
 
 function toolClick(tool) {
   console.log(tool.id);
   tools.forEach((tool) => {
     tool.classList.remove("active");
   });
+  items.forEach((tool) => {
+    tool.classList.remove("active");
+  });
 
-  // const cursorImage =
-  //   getComputedStyle(tool).getPropertyValue("background-image");
   tool.classList.add("active");
 
   if (tool.classList.contains("active")) {
@@ -34,34 +35,81 @@ function addCount(tile, isStone = false) {
   item.setAttribute("count", parseInt(item.getAttribute("count")) + 1);
 }
 
-tiles.forEach((tile) => {
-  tile.addEventListener("click", () => {
-    if (selectedTool === "shovel" && tile.classList.contains("ground")) {
-      addCount(tile);
+function tileClickEvent(tile) {
+  if (selectedTool === "shovel" && tile.classList.contains("ground")) {
+    addCount(tile);
 
-      while (tile.attributes.length > 1) {
-        tile.removeAttribute(tile.attributes[1].name);
+    while (tile.attributes.length > 1) {
+      tile.removeAttribute(tile.attributes[1].name);
+    }
+
+    tile.classList.remove("ground");
+    tile.classList.add("sky");
+  } else if (selectedTool === "axe" && tile.classList.contains("tree")) {
+    addCount(tile);
+    tile.classList.remove("tree");
+    tile.classList.add("sky");
+  } else if (selectedTool === "pickaxe" && tile.classList.contains("stone")) {
+    addCount(tile, true);
+    tile.classList.remove("stone");
+    tile.classList.add("sky");
+  }
+}
+
+function skyClickEvent(newTile) {
+  if (selectedItem) {
+    const item = document.getElementById(selectedItem);
+    if (item.getAttribute("count") > 0) {
+      item.setAttribute("count", parseInt(item.getAttribute("count")) - 1);
+      newTile.classList.remove("sky");
+      switch (selectedItem) {
+        case "wood":
+          newTile.classList.add("tree");
+          newTile.classList.add("wood");
+
+          break;
+        case "stone":
+          newTile.classList.add("stone");
+
+          break;
+        case "leaves":
+          newTile.classList.add("tree");
+          newTile.classList.add("leaves");
+
+          break;
       }
 
-      tile.classList.remove("ground");
-      tile.classList.add("sky");
-    } else if (selectedTool === "axe" && tile.classList.contains("tree")) {
-      addCount(tile);
-      tile.classList.remove("tree");
-      tile.classList.add("sky");
-    } else if (selectedTool === "pickaxe" && tile.classList.contains("stone")) {
-      addCount(tile, true);
-      tile.classList.remove("stone");
-      tile.classList.add("sky");
+      if (item.getAttribute("type") === "grass") {
+        newTile.classList.add("ground");
+        newTile.setAttribute("grass-type", selectedItem);
+      } else {
+        newTile.classList.add("ground");
+        newTile.setAttribute("soil-type", selectedItem);
+      }
     }
-    const sky = document.querySelectorAll(".sky");
-    addClickEvent(sky);
-  });
+  }
+}
+
+gameContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("sky")) {
+    skyClickEvent(e.target);
+  } else {
+    tileClickEvent(e.target);
+  }
 });
+
+// tiles.forEach((tile) => {
+//   tile.addEventListener("click", () => {
+//     tileClickEvent(tile);
+//   });
+// });
 
 items.forEach((item) => {
   item.addEventListener("click", () => {
     if (item.getAttribute("count") > 0) {
+      items.forEach((tool) => {
+        tool.classList.remove("active");
+      });
       tools.forEach((tool) => {
         tool.classList.remove("active");
       });
@@ -73,41 +121,34 @@ items.forEach((item) => {
   });
 });
 
-function addClickEvent(sky) {
-  sky.forEach((tile) => {
-    const newTile = tile.cloneNode(true);
-    tile.parentNode.replaceChild(newTile, tile);
+// function addClickEvent(sky) {
+//   sky.forEach((tile) => {
+//     const newTile = tile.cloneNode(true);
+//     tile.parentNode.replaceChild(newTile, tile);
 
-    newTile.addEventListener("click", () => {
-      if (selectedItem) {
-        const item = document.getElementById(selectedItem);
-        if (item.getAttribute("count") > 0) {
-          item.setAttribute("count", parseInt(item.getAttribute("count")) - 1);
-          newTile.classList.remove("sky");
-          switch (selectedItem) {
-            case "wood":
-              newTile.classList.add("tree");
-              newTile.classList.add(selectedItem);
-              break;
-            case "stone":
-              newTile.classList.add("stone");
-              break;
-            case "leaves":
-              newTile.classList.add("leaves");
-              break;
-          }
+//     newTile.addEventListener("click", () => {
+//       skyClickEvent(newTile);
+//     });
+//   });
+// }
 
-          if (item.getAttribute("type") === "grass") {
-            newTile.classList.add("ground");
-            newTile.setAttribute("grass-type", selectedItem);
-            return;
-          } else {
-            newTile.classList.add("ground");
-            newTile.setAttribute("soil-type", selectedItem);
-            return;
-          }
-        }
-      }
-    });
-  });
-}
+// function addClickEvent(sky) {
+//   sky.forEach((tile) => {
+//     // Define the event handler function
+//     const eventHandler = () => {
+//       skyClickEvent(tile);
+//     };
+
+//     const tileEvenhandler = () => {
+//       tileClickEvent(tile);
+//     };
+
+//     tile.removeEventListener("click", eventHandler);
+//     tile.removeEventListener("click", tileEvenhandler);
+//     // Remove the existing event listener if it exists
+//     tile.removeEventListener("click", eventHandler);
+
+//     // Add the new event listener
+//     tile.addEventListener("click", eventHandler);
+//   });
+// }
