@@ -47,10 +47,15 @@ function tileClickEvent(tile) {
     tile.classList.add("sky");
   } else if (selectedTool === "axe" && tile.classList.contains("tree")) {
     addCount(tile);
+
+    while (tile.attributes.length > 1) {
+      tile.removeAttribute(tile.attributes[1].name);
+    }
     tile.classList.remove("tree");
     tile.classList.add("sky");
   } else if (selectedTool === "pickaxe" && tile.classList.contains("stone")) {
     addCount(tile, true);
+
     tile.classList.remove("stone");
     tile.classList.add("sky");
   }
@@ -64,19 +69,26 @@ function skyClickEvent(newTile) {
       newTile.classList.remove("sky");
       switch (selectedItem) {
         case "wood":
+          newTile.classList.remove("ground");
           newTile.classList.add("tree");
+          while (newTile.attributes.length > 1) {
+            newTile.removeAttribute(newTile.attributes[1].name);
+          }
           newTile.setAttribute("tree-type", selectedItem);
+          return;
 
-          break;
         case "stone":
           newTile.classList.add("stone");
+          return;
 
-          break;
         case "leaves":
+          newTile.classList.remove("ground");
           newTile.classList.add("tree");
+          while (newTile.attributes.length > 1) {
+            newTile.removeAttribute(newTile.attributes[1].name);
+          }
           newTile.setAttribute("tree-type", selectedItem);
-
-          break;
+          return;
       }
 
       if (item.getAttribute("type") === "grass") {
