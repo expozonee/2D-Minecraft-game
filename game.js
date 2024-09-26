@@ -9,13 +9,20 @@ const resetGameButton = document.querySelector("#reset-game");
 const box = document.querySelector(".box");
 const itemsContainer = document.querySelector("#items");
 let OriginalgameContainer;
+let itemsCounter = {};
 
 document.addEventListener("DOMContentLoaded", () => {
   OriginalgameContainer = gameContainer.innerHTML;
+
+  items.forEach((item) => {
+    itemsCounter[item.id] = 0;
+  });
+  removeEmptyItems();
 });
 
 box.addEventListener("click", () => {
   itemsContainer.classList.toggle("items-active");
+  itemsContainer.classList.toggle("hide");
 });
 
 function resetGame() {
@@ -54,10 +61,15 @@ function addCount(tile, isStone = false) {
     const attValue = tile.attributes[1].value;
     const item = document.getElementById(attValue);
     item.setAttribute("count", parseInt(item.getAttribute("count")) + 1);
+    itemsCounter[item.id] += 1;
+    removeEmptyItems();
+
     return;
   }
   const item = document.getElementById("stone");
   item.setAttribute("count", parseInt(item.getAttribute("count")) + 1);
+  itemsCounter[item.id] += 1;
+  removeEmptyItems();
 }
 
 function tileClickEvent(tile) {
@@ -91,6 +103,9 @@ function skyClickEvent(newTile) {
     const item = document.getElementById(selectedItem);
     if (item.getAttribute("count") > 0) {
       item.setAttribute("count", parseInt(item.getAttribute("count")) - 1);
+      itemsCounter[item.id] -= 1;
+      removeEmptyItems();
+
       newTile.classList.remove("sky");
       switch (selectedItem) {
         case "wood":
@@ -151,3 +166,27 @@ items.forEach((item) => {
     }
   });
 });
+
+const emptyMessage = document.createElement("p");
+emptyMessage.textContent = "Start playing to have items!";
+
+function removeEmptyItems() {
+  if (Object.values(itemsCounter).every((value) => value === 0)) {
+    itemsContainer.append(emptyMessage);
+    itemsContainer.classList.add("empty");
+    itemsContainer.classList.add("hide");
+  } else {
+    if (itemsContainer.contains(emptyMessage)) {
+      itemsContainer.removeChild(emptyMessage);
+      itemsContainer.classList.remove("empty");
+    }
+  }
+
+  items.forEach((item) => {
+    if (itemsCounter[item.id] === 0) {
+      item.classList.add("hide");
+    } else {
+      item.classList.remove("hide");
+    }
+  });
+}

@@ -8,3 +8,20 @@
   left: 10%;
   bottom: 50px;
 }
+
+.hide {
+  display: none;
+}
+
+#items.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 15%;
+  bottom: 200px;
+}
+
+#items.empty.hide {
+  display: none;
+}
