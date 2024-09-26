@@ -1,3 +1,10 @@
 .active {
   border: 1px solid rgb(255, 255, 255);
 }
+
+#items.items-active {
+  display: grid;
+  position: fixed;
+  left: 10%;
+  bottom: 50px;
+}

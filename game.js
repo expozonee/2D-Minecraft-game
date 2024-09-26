@@ -1,9 +1,34 @@
 let selectedTool = null;
 let selectedItem = null;
+const mainContainer = document.querySelector("#main-container");
 const gameContainer = document.querySelector("#game-container");
 const tiles = document.querySelectorAll(".fraction > *:not(.sky)");
 const tools = document.querySelectorAll("#tools > *");
 const items = document.querySelectorAll("#items > *");
+const resetGameButton = document.querySelector("#reset-game");
+const box = document.querySelector(".box");
+const itemsContainer = document.querySelector("#items");
+let OriginalgameContainer;
+
+document.addEventListener("DOMContentLoaded", () => {
+  OriginalgameContainer = gameContainer.innerHTML;
+});
+
+box.addEventListener("click", () => {
+  itemsContainer.classList.toggle("items-active");
+});
+
+function resetGame() {
+  gameContainer.innerHTML = OriginalgameContainer;
+
+  items.forEach((item) => {
+    item.setAttribute("count", "0");
+  });
+}
+
+resetGameButton.addEventListener("click", () => {
+  resetGame();
+});
 
 function toolClick(tool) {
   console.log(tool.id);
