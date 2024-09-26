@@ -135,12 +135,6 @@ gameContainer.addEventListener("click", (e) => {
   }
 });
 
-// tiles.forEach((tile) => {
-//   tile.addEventListener("click", () => {
-//     tileClickEvent(tile);
-//   });
-// });
-
 items.forEach((item) => {
   item.addEventListener("click", () => {
     if (item.getAttribute("count") > 0) {
@@ -157,35 +151,3 @@ items.forEach((item) => {
     }
   });
 });
-
-// function addClickEvent(sky) {
-//   sky.forEach((tile) => {
-//     const newTile = tile.cloneNode(true);
-//     tile.parentNode.replaceChild(newTile, tile);
-
-//     newTile.addEventListener("click", () => {
-//       skyClickEvent(newTile);
-//     });
-//   });
-// }
-
-// function addClickEvent(sky) {
-//   sky.forEach((tile) => {
-//     // Define the event handler function
-//     const eventHandler = () => {
-//       skyClickEvent(tile);
-//     };
-
-//     const tileEvenhandler = () => {
-//       tileClickEvent(tile);
-//     };
-
-//     tile.removeEventListener("click", eventHandler);
-//     tile.removeEventListener("click", tileEvenhandler);
-//     // Remove the existing event listener if it exists
-//     tile.removeEventListener("click", eventHandler);
-
-//     // Add the new event listener
-//     tile.addEventListener("click", eventHandler);
-//   });
-// }

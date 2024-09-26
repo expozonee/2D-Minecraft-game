@@ -93,9 +93,6 @@ body {
   --columns: 30;
   --rows: 15;
   --gap: 0px;
-
-  /* width: calc(1200px + ((var(--columns) - 1) * var(--gap)));
-  height: calc(600px + ((var(--rows) - 1) * var(--gap))); */
   background-color: black;
   display: grid;
   grid-template-columns: repeat(30, 40px);
@@ -106,9 +103,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: bisque; */
-  /* width: 220px; */
-  /* height: 60px; */
   gap: 2px;
 }
 
