@@ -65,7 +65,7 @@ function skyClickEvent(newTile) {
       switch (selectedItem) {
         case "wood":
           newTile.classList.add("tree");
-          newTile.classList.add("wood");
+          newTile.setAttribute("tree-type", selectedItem);
 
           break;
         case "stone":
@@ -74,7 +74,7 @@ function skyClickEvent(newTile) {
           break;
         case "leaves":
           newTile.classList.add("tree");
-          newTile.classList.add("leaves");
+          newTile.setAttribute("tree-type", selectedItem);
 
           break;
       }

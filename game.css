@@ -58,11 +58,11 @@ body {
   background-image: url(./assets/stone.jpg);
 }
 
-.tree.wood {
+.tree[tree-type="wood"] {
   background-image: url(./assets/wood.png);
 }
 
-.tree.leaves {
+.tree[tree-type="leaves"] {
   background-image: url(./assets/leaves.png);
 }
 
