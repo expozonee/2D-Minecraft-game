@@ -108,7 +108,6 @@ function skyClickEvent(newTile) {
 
       switch (itemData.itemType) {
         case "wood":
-          newTile.classList.remove("ground");
           newTile.classList.add("wood");
           while (newTile.attributes.length > 1) {
             newTile.removeAttribute(newTile.attributes[1].name);
@@ -122,7 +121,6 @@ function skyClickEvent(newTile) {
           break;
 
         case "leaves":
-          newTile.classList.remove("ground");
           newTile.classList.add("leaves");
           while (newTile.attributes.length > 1) {
             newTile.removeAttribute(newTile.attributes[1].name);
