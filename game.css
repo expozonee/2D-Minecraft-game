@@ -10,60 +10,56 @@ body {
   cursor: url(./assets/cursor.cur), auto;
 }
 
-.ground[grass-type="grass1"] {
+.grass[grass-type="grass1"] {
   background-image: url(./assets/grass1.png);
 }
 
-.ground[grass-type="grass2"] {
+.grass[grass-type="grass2"] {
   background-image: url(./assets/grass2.png);
 }
 
-.ground[grass-type="grass3"] {
+.grass[grass-type="grass3"] {
   background-image: url(./assets/grass3.png);
 }
 
-.ground[grass-type="grass4"] {
+.grass[grass-type="grass4"] {
   background-image: url(./assets/grass4.png);
 }
 
-.ground[grass-type="grass5"] {
+.grass[grass-type="grass5"] {
   background-image: url(./assets/grass5.png);
 }
 
-.ground[grass-type="grass6"] {
-  background-image: url(./assets/grass6.png);
-}
-
-.ground[soil-type="soil1"] {
+.soil[soil-type="soil1"] {
   background-image: url(./assets/soil1.png);
 }
 
-.ground[soil-type="soil2"] {
+.soil[soil-type="soil2"] {
   background-image: url(./assets/soil2.png);
 }
 
-.ground[soil-type="soil3"] {
+.soil[soil-type="soil3"] {
   background-image: url(./assets/soil3.png);
 }
 
-.ground[soil-type="soil4"] {
+.soil[soil-type="soil4"] {
   background-image: url(./assets/soil4.png);
 }
 
-.ground[soil-type="soil5"] {
+.soil[soil-type="soil5"] {
   background-image: url(./assets/soil5.png);
 }
 
-.stone {
-  background-image: url(./assets/stone.jpg);
+.stone[stone-type="stone1"] {
+  background-image: url(./assets/Stone1.jpg);
 }
 
-.tree[tree-type="wood"] {
-  background-image: url(./assets/wood.png);
+.wood[wood-type="wood1"] {
+  background-image: url(./assets/wood1.png);
 }
 
-.tree[tree-type="leaves"] {
-  background-image: url(./assets/leaves.png);
+.leaves[leaves-type="leaves1"] {
+  background-image: url(./assets/leaves1.png);
 }
 
 #reset-game {

@@ -1,5 +1,3 @@
-let selectedTool = null;
-let selectedItem = null;
 const mainContainer = document.querySelector("#main-container");
 const gameContainer = document.querySelector("#game-container");
 const tiles = document.querySelectorAll(".fraction > *:not(.sky)");
@@ -10,6 +8,11 @@ const box = document.querySelector(".box");
 const itemsContainer = document.querySelector("#items");
 let OriginalgameContainer;
 let itemsCounter = {};
+let selectedTool = undefined;
+let itemData = {
+  selectedItem: undefined,
+  itemType: undefined,
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   OriginalgameContainer = gameContainer.innerHTML;
@@ -41,7 +44,6 @@ resetGameButton.addEventListener("click", () => {
 });
 
 function toolClick(tool) {
-  console.log(tool.id);
   tools.forEach((tool) => {
     tool.classList.remove("active");
   });
@@ -52,31 +54,26 @@ function toolClick(tool) {
   tool.classList.add("active");
 
   if (tool.classList.contains("active")) {
-    selectedItem = null;
+    itemData.selectedItem = null;
     selectedTool = tool.id;
   } else {
     selectedTool = null;
   }
 }
 
-function addCount(tile, isStone = false) {
-  if (!isStone) {
-    const attValue = tile.attributes[1].value;
-    const item = document.getElementById(attValue);
-    item.setAttribute("count", parseInt(item.getAttribute("count")) + 1);
-    itemsCounter[item.id] += 1;
-    removeEmptyItems();
-
-    return;
-  }
-  const item = document.getElementById("stone");
-  item.setAttribute("count", parseInt(item.getAttribute("count")) + 1);
+function addCount(tile) {
+  const attValue = tile.attributes[1].value;
+  const item = document.getElementById(attValue);
   itemsCounter[item.id] += 1;
+  item.setAttribute("count", itemsCounter[item.id]);
   removeEmptyItems();
 }
 
 function tileClickEvent(tile) {
-  if (selectedTool === "shovel" && tile.classList.contains("ground")) {
+  if (
+    (selectedTool === "shovel" && tile.classList.contains("grass")) ||
+    tile.classList.contains("soil")
+  ) {
     addCount(tile);
 
     while (tile.attributes.length > 1) {
@@ -85,7 +82,10 @@ function tileClickEvent(tile) {
 
     tile.classList.remove("ground");
     tile.classList.add("sky");
-  } else if (selectedTool === "axe" && tile.classList.contains("tree")) {
+  } else if (
+    selectedTool === "axe" &&
+    (tile.classList.contains("wood") || tile.classList.contains("leaves"))
+  ) {
     addCount(tile);
 
     while (tile.attributes.length > 1) {
@@ -94,7 +94,7 @@ function tileClickEvent(tile) {
     tile.classList.remove("tree");
     tile.classList.add("sky");
   } else if (selectedTool === "pickaxe" && tile.classList.contains("stone")) {
-    addCount(tile, true);
+    addCount(tile);
 
     tile.classList.remove("stone");
     tile.classList.add("sky");
@@ -102,44 +102,48 @@ function tileClickEvent(tile) {
 }
 
 function skyClickEvent(newTile) {
-  if (selectedItem) {
-    const item = document.getElementById(selectedItem);
+  if (itemData.selectedItem) {
+    const item = document.getElementById(itemData.selectedItem);
     if (item.getAttribute("count") > 0) {
-      item.setAttribute("count", parseInt(item.getAttribute("count")) - 1);
       itemsCounter[item.id] -= 1;
+      item.setAttribute("count", itemsCounter[item.id]);
       removeEmptyItems();
 
       newTile.classList.remove("sky");
-      switch (selectedItem) {
+
+      switch (itemData.itemType) {
         case "wood":
           newTile.classList.remove("ground");
-          newTile.classList.add("tree");
+          newTile.classList.add("wood");
           while (newTile.attributes.length > 1) {
             newTile.removeAttribute(newTile.attributes[1].name);
           }
-          newTile.setAttribute("tree-type", selectedItem);
-          return;
+          newTile.setAttribute("wood-type", itemData.selectedItem);
+          break;
 
         case "stone":
           newTile.classList.add("stone");
-          return;
+          newTile.setAttribute("stone-type", itemData.selectedItem);
+          break;
 
         case "leaves":
           newTile.classList.remove("ground");
-          newTile.classList.add("tree");
+          newTile.classList.add("leaves");
           while (newTile.attributes.length > 1) {
             newTile.removeAttribute(newTile.attributes[1].name);
           }
-          newTile.setAttribute("tree-type", selectedItem);
-          return;
-      }
+          newTile.setAttribute("leaves-type", itemData.selectedItem);
+          break;
 
-      if (item.getAttribute("type") === "grass") {
-        newTile.classList.add("ground");
-        newTile.setAttribute("grass-type", selectedItem);
-      } else {
-        newTile.classList.add("ground");
-        newTile.setAttribute("soil-type", selectedItem);
+        case "grass":
+          newTile.classList.add("grass");
+          newTile.setAttribute("grass-type", itemData.selectedItem);
+          break;
+
+        case "soil":
+          newTile.classList.add("soil");
+          newTile.setAttribute("soil-type", itemData.selectedItem);
+          break;
       }
     }
   }
@@ -163,9 +167,11 @@ items.forEach((item) => {
         tool.classList.remove("active");
       });
       item.classList.add("active");
-      const type = item.id;
-      selectedTool = null;
-      selectedItem = type;
+      const type = item.getAttribute("type");
+      selectedTool = undefined;
+
+      itemData.selectedItem = item.id;
+      itemData.itemType = type;
     }
   });
 });

@@ -18,8 +18,8 @@
   background-image: url(./assets/grass5.png);
 }
 
-#leaves {
-  background-image: url(./assets/leaves.png);
+#leaves1 {
+  background-image: url(./assets/leaves1.png);
 }
 
 #soil1 {
@@ -42,12 +42,12 @@
   background-image: url(./assets/soil5.png);
 }
 
-#stone {
-  background-image: url(./assets/Stone.jpg);
+#stone1 {
+  background-image: url(./assets/Stone1.jpg);
 }
 
-#wood {
-  background-image: url(./assets/wood.png);
+#wood1 {
+  background-image: url(./assets/wood1.png);
 }
 
 .item {
