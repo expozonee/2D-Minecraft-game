@@ -52,13 +52,8 @@ function toolClick(tool) {
   });
 
   tool.classList.add("active");
-
-  if (tool.classList.contains("active")) {
-    itemData.selectedItem = null;
-    selectedTool = tool.id;
-  } else {
-    selectedTool = null;
-  }
+  itemData.selectedItem = undefined;
+  selectedTool = tool.id;
 }
 
 function addCount(tile) {
@@ -71,8 +66,8 @@ function addCount(tile) {
 
 function tileClickEvent(tile) {
   if (
-    (selectedTool === "shovel" && tile.classList.contains("grass")) ||
-    tile.classList.contains("soil")
+    selectedTool === "shovel" &&
+    (tile.classList.contains("grass") || tile.classList.contains("soil"))
   ) {
     addCount(tile);
 
