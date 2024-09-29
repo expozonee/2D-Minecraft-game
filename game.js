@@ -64,6 +64,16 @@ function addCount(tile) {
   removeEmptyItems();
 }
 
+function addItemToBox(tile) {
+  const itemsContainer = document.querySelector("#items");
+  const item = document.createElement("div");
+  item.classList.add("item");
+  item.setAttribute("count", 0);
+  item.setAttribute("type", item.attributes[0].value);
+  item.id = item.attributes[1].value;
+  itemsContainer.appendChild(item);
+}
+
 function tileClickEvent(tile) {
   if (
     selectedTool === "shovel" &&
@@ -75,7 +85,8 @@ function tileClickEvent(tile) {
       tile.removeAttribute(tile.attributes[1].name);
     }
 
-    tile.classList.remove("ground");
+    tile.classList.remove("grass");
+    tile.classList.remove("soil");
     tile.classList.add("sky");
   } else if (
     selectedTool === "axe" &&
@@ -86,7 +97,8 @@ function tileClickEvent(tile) {
     while (tile.attributes.length > 1) {
       tile.removeAttribute(tile.attributes[1].name);
     }
-    tile.classList.remove("tree");
+    tile.classList.remove("wood");
+    tile.classList.remove("leaves");
     tile.classList.add("sky");
   } else if (selectedTool === "pickaxe" && tile.classList.contains("stone")) {
     addCount(tile);
