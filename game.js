@@ -57,21 +57,61 @@ function toolClick(tool) {
 }
 
 function addCount(tile) {
+  // debugger;
   const attValue = tile.attributes[1].value;
   const item = document.getElementById(attValue);
+  if (!itemsCounter[item.id]) {
+    itemsCounter[item.id] = 0;
+  }
   itemsCounter[item.id] += 1;
   item.setAttribute("count", itemsCounter[item.id]);
   removeEmptyItems();
 }
 
 function addItemToBox(tile) {
-  const itemsContainer = document.querySelector("#items");
-  const item = document.createElement("div");
-  item.classList.add("item");
-  item.setAttribute("count", 0);
-  item.setAttribute("type", item.attributes[0].value);
-  item.id = item.attributes[1].value;
-  itemsContainer.appendChild(item);
+  const items = [...itemsContainer.children];
+  const itemToCheck = items.find(
+    (item) => item.id === tile.attributes[1].value
+  );
+  if (itemToCheck) {
+    addCount(tile);
+  } else {
+    const item = document.createElement("div");
+    item.classList.add("item");
+    item.setAttribute("count", 0);
+    item.setAttribute("type", tile.attributes[0].value);
+    item.id = tile.attributes[1].value;
+    itemsContainer.appendChild(item);
+    addCount(tile);
+  }
+
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
+      if (item.getAttribute("count") > 0) {
+        items.forEach((tool) => {
+          tool.classList.remove("active");
+        });
+        tools.forEach((tool) => {
+          tool.classList.remove("active");
+        });
+        item.classList.add("active");
+        const type = item.getAttribute("type");
+        selectedTool = undefined;
+
+        itemData.selectedItem = item.id;
+        itemData.itemType = type;
+      }
+    });
+  });
+}
+
+function removeItemFromBox(item) {
+  itemsCounter[item.id] -= 1;
+  if (itemsCounter[item.id] === 0) {
+    itemsContainer.removeChild(item);
+  } else {
+    item.setAttribute("count", itemsCounter[item.id]);
+  }
 }
 
 function tileClickEvent(tile) {
@@ -79,7 +119,8 @@ function tileClickEvent(tile) {
     selectedTool === "shovel" &&
     (tile.classList.contains("grass") || tile.classList.contains("soil"))
   ) {
-    addCount(tile);
+    addItemToBox(tile);
+    // addCount(tile);
 
     while (tile.attributes.length > 1) {
       tile.removeAttribute(tile.attributes[1].name);
@@ -92,7 +133,9 @@ function tileClickEvent(tile) {
     selectedTool === "axe" &&
     (tile.classList.contains("wood") || tile.classList.contains("leaves"))
   ) {
-    addCount(tile);
+    addItemToBox(tile);
+
+    // addCount(tile);
 
     while (tile.attributes.length > 1) {
       tile.removeAttribute(tile.attributes[1].name);
@@ -101,7 +144,9 @@ function tileClickEvent(tile) {
     tile.classList.remove("leaves");
     tile.classList.add("sky");
   } else if (selectedTool === "pickaxe" && tile.classList.contains("stone")) {
-    addCount(tile);
+    addItemToBox(tile);
+
+    // addCount(tile);
 
     tile.classList.remove("stone");
     tile.classList.add("sky");
@@ -112,8 +157,9 @@ function skyClickEvent(newTile) {
   if (itemData.selectedItem) {
     const item = document.getElementById(itemData.selectedItem);
     if (item.getAttribute("count") > 0) {
-      itemsCounter[item.id] -= 1;
-      item.setAttribute("count", itemsCounter[item.id]);
+      removeItemFromBox(item);
+      // itemsCounter[item.id] -= 1;
+      // item.setAttribute("count", itemsCounter[item.id]);
       removeEmptyItems();
 
       newTile.classList.remove("sky");
