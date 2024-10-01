@@ -23,6 +23,7 @@ body {
 
 button {
   font-family: "MinecraftSeven";
+  background-image: url("./assets/buttons/button.png");
 }
 
 .grass[grass-type="grass1"] {
@@ -83,10 +84,9 @@ button {
   left: 20px;
   width: 200px;
   height: 50px;
-  border-radius: 20px;
   background-color: brown;
   color: white;
-  border: none;
+  border: 1px solid black;
 }
 
 #main-container {
