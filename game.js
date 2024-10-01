@@ -63,8 +63,6 @@ function addCount(tile) {
 }
 
 function addItemToBox(tile) {
-  // debugger;
-
   if (itemsContainer.contains(emptyMessage)) {
     itemsContainer.removeChild(emptyMessage);
     itemsContainer.classList.remove("empty");
