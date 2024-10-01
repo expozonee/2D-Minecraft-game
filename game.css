@@ -17,13 +17,26 @@
 }
 
 body {
-  cursor: url(./assets/cursor.cur), auto;
+  cursor: url(./assets/cursors/cursor.cur), auto;
   font-family: "MinecraftSeven";
 }
 
 button {
+  cursor: url(./assets/cursors/cursor.cur), auto;
   font-family: "MinecraftSeven";
+  border: 2px solid;
+  border-color: #aaa #565656 #565656 #aaa;
   background-image: url("./assets/buttons/button.png");
+  outline: 1px solid black;
+}
+
+button:hover {
+  cursor: url(./assets/cursors/cursor.cur), auto;
+  background-image: url("./assets/buttons/hover.png");
+}
+
+button:active {
+  border-color: #565656 #aaa #aaa #565656;
 }
 
 .grass[grass-type="grass1"] {
@@ -86,7 +99,6 @@ button {
   height: 50px;
   background-color: brown;
   color: white;
-  border: 1px solid black;
 }
 
 #main-container {
@@ -121,6 +133,7 @@ button {
   padding: 2rem;
   border-radius: 5px;
   background-color: rgb(68, 68, 68);
+  background-image: url("/assets/buttons/button.png");
   display: none;
   grid-template-columns: repeat(5, 75px);
   grid-template-rows: repeat(3, 75px);
