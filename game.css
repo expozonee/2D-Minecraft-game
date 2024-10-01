@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "MinecraftSeven";
+  src: url("/assets/fonts/MinecraftSeven.ttf");
+}
+
+@font-face {
+  font-family: "MinecraftTen";
+  src: url("/assets/fonts/minecraftTen.ttf");
+}
+
 *,
 *::before,
 *::after {
@@ -8,6 +18,11 @@
 
 body {
   cursor: url(./assets/cursor.cur), auto;
+  font-family: "MinecraftSeven";
+}
+
+button {
+  font-family: "MinecraftSeven";
 }
 
 .grass[grass-type="grass1"] {

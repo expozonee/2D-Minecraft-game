@@ -6,6 +6,9 @@ const items = document.querySelectorAll("#items > *");
 const resetGameButton = document.querySelector("#reset-game");
 const box = document.querySelector(".box");
 const itemsContainer = document.querySelector("#items");
+const emptyMessage = document.createElement("p");
+emptyMessage.textContent = "Start playing to have items!";
+emptyMessage.classList.add("highlightText");
 let OriginalgameContainer;
 let itemsCounter = {};
 let selectedTool = undefined;
@@ -20,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   items.forEach((item) => {
     itemsCounter[item.id] = 0;
   });
-  removeEmptyItems();
+  itemsContainer.append(emptyMessage);
+  itemsContainer.classList.add("empty");
 });
 
 box.addEventListener("click", () => {
@@ -36,7 +40,6 @@ function resetGame() {
   items.forEach((item) => {
     itemsCounter[item.id] = 0;
   });
-  removeEmptyItems();
 }
 
 resetGameButton.addEventListener("click", () => {
@@ -57,7 +60,6 @@ function toolClick(tool) {
 }
 
 function addCount(tile) {
-  // debugger;
   const attValue = tile.attributes[1].value;
   const item = document.getElementById(attValue);
   if (!itemsCounter[item.id]) {
@@ -65,10 +67,14 @@ function addCount(tile) {
   }
   itemsCounter[item.id] += 1;
   item.setAttribute("count", itemsCounter[item.id]);
-  removeEmptyItems();
 }
 
 function addItemToBox(tile) {
+  if (itemsContainer.contains(emptyMessage)) {
+    itemsContainer.removeChild(emptyMessage);
+    itemsContainer.classList.remove("empty");
+  }
+
   const items = [...itemsContainer.children];
   const itemToCheck = items.find(
     (item) => item.id === tile.attributes[1].value
@@ -109,6 +115,11 @@ function removeItemFromBox(item) {
   itemsCounter[item.id] -= 1;
   if (itemsCounter[item.id] === 0) {
     itemsContainer.removeChild(item);
+
+    if (itemsContainer.children.length === 0) {
+      itemsContainer.append(emptyMessage);
+      itemsContainer.classList.add("empty");
+    }
   } else {
     item.setAttribute("count", itemsCounter[item.id]);
   }
@@ -120,7 +131,6 @@ function tileClickEvent(tile) {
     (tile.classList.contains("grass") || tile.classList.contains("soil"))
   ) {
     addItemToBox(tile);
-    // addCount(tile);
 
     while (tile.attributes.length > 1) {
       tile.removeAttribute(tile.attributes[1].name);
@@ -135,8 +145,6 @@ function tileClickEvent(tile) {
   ) {
     addItemToBox(tile);
 
-    // addCount(tile);
-
     while (tile.attributes.length > 1) {
       tile.removeAttribute(tile.attributes[1].name);
     }
@@ -145,8 +153,6 @@ function tileClickEvent(tile) {
     tile.classList.add("sky");
   } else if (selectedTool === "pickaxe" && tile.classList.contains("stone")) {
     addItemToBox(tile);
-
-    // addCount(tile);
 
     tile.classList.remove("stone");
     tile.classList.add("sky");
@@ -158,9 +164,7 @@ function skyClickEvent(newTile) {
     const item = document.getElementById(itemData.selectedItem);
     if (item.getAttribute("count") > 0) {
       removeItemFromBox(item);
-      // itemsCounter[item.id] -= 1;
-      // item.setAttribute("count", itemsCounter[item.id]);
-      removeEmptyItems();
+      // removeEmptyItems();
 
       newTile.classList.remove("sky");
 
@@ -227,27 +231,27 @@ items.forEach((item) => {
   });
 });
 
-const emptyMessage = document.createElement("p");
-emptyMessage.textContent = "Start playing to have items!";
-emptyMessage.classList.add("highlightText");
+// const emptyMessage = document.createElement("p");
+// emptyMessage.textContent = "Start playing to have items!";
+// emptyMessage.classList.add("highlightText");
 
-function removeEmptyItems() {
-  if (Object.values(itemsCounter).every((value) => value === 0)) {
-    itemsContainer.append(emptyMessage);
-    itemsContainer.classList.add("empty");
-    itemsContainer.classList.add("hide");
-  } else {
-    if (itemsContainer.contains(emptyMessage)) {
-      itemsContainer.removeChild(emptyMessage);
-      itemsContainer.classList.remove("empty");
-    }
-  }
+// function removeEmptyItems() {
+//   if (Object.values(itemsCounter).every((value) => value === 0)) {
+//     itemsContainer.append(emptyMessage);
+//     itemsContainer.classList.add("empty");
+//     itemsContainer.classList.add("hide");
+//   } else {
+//     if (itemsContainer.contains(emptyMessage)) {
+//       itemsContainer.removeChild(emptyMessage);
+//       itemsContainer.classList.remove("empty");
+//     }
+//   }
 
-  items.forEach((item) => {
-    if (itemsCounter[item.id] === 0) {
-      item.classList.add("hide");
-    } else {
-      item.classList.remove("hide");
-    }
-  });
-}
+//   items.forEach((item) => {
+//     if (itemsCounter[item.id] === 0) {
+//       item.classList.add("hide");
+//     } else {
+//       item.classList.remove("hide");
+//     }
+//   });
+// }
