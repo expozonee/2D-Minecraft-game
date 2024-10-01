@@ -30,6 +30,7 @@ box.addEventListener("click", () => {
 });
 
 function resetGame() {
+  items = [...itemsContainer.children];
   gameContainer.innerHTML = OriginalgameContainer;
   items.forEach((item) => {
     item.setAttribute("count", "0");
@@ -66,6 +67,7 @@ function addItemToBox(tile) {
   if (itemsContainer.contains(emptyMessage)) {
     itemsContainer.removeChild(emptyMessage);
     itemsContainer.classList.remove("empty");
+    itemsContainer.classList.add("items-active");
   }
 
   const itemToCheck = items.find(
