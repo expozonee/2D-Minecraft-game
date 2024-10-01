@@ -5,7 +5,538 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./game.js" defer></script>
     <link rel="stylesheet" href="game.css" />
+    <link rel="stylesheet" href="utility.css" />
+    <link rel="stylesheet" href="items.css" />
     <title>2D Minecraft</title>
   </head>
-  <body></body>
+  <body>
+    <div id="main-container">
+      <div id="game-container">
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass2"></div>
+          <div class="soil" soil-type="soil3"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil5"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass3"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil3"></div>
+          <div class="soil" soil-type="soil4"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+
+          <div class="wood" wood-type="wood1"></div>
+
+          <div class="wood" wood-type="wood1"></div>
+
+          <div class="wood" wood-type="wood1"></div>
+
+          <div class="wood" wood-type="wood1"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="wood" wood-type="wood1"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="leaves" leaves-type="leaves1"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+        <div class="fraction">
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="sky"></div>
+          <div class="grass" grass-type="grass1"></div>
+          <div class="soil" soil-type="soil1"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="soil" soil-type="soil2"></div>
+          <div class="stone" stone-type="stone1"></div>
+          <div class="stone" stone-type="stone1"></div>
+        </div>
+      </div>
+      <div id="tools-container">
+        <div id="items"></div>
+        <div class="box"></div>
+        <div id="tools">
+          <div onclick="toolClick(this)" id="axe"></div>
+          <div onclick="toolClick(this)" id="shovel"></div>
+          <div onclick="toolClick(this)" id="pickaxe"></div>
+        </div>
+      </div>
+      <button id="reset-game">Reset Game</button>
+    </div>
+  </body>
 </html>
