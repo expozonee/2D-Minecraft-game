@@ -54,6 +54,7 @@ function toolClick(tool) {
   tool.classList.add("active");
   itemData.selectedItem = undefined;
   selectedTool = tool.id;
+  document.body.style.cursor = `url(./assets/cursors/${tool.id}.cur), auto`;
 }
 
 function addCount(tile) {
