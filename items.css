@@ -50,6 +50,26 @@
   background-image: url(./assets/wood1.png);
 }
 
+#coal {
+  background-image: url(./assets/coal.png);
+}
+
+#diamond {
+  background-image: url(./assets/diamond.png);
+}
+
+#gold {
+  background-image: url(./assets/gold.png);
+}
+
+#iron {
+  background-image: url(./assets/Iron.jpg);
+}
+
+#redstone {
+  background-image: url(./assets/redstone.jpeg);
+}
+
 .item {
   width: 100%;
   height: 100%;
