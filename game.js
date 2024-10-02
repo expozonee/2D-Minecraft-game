@@ -8,6 +8,7 @@ const itemsContainer = document.querySelector("#items");
 const emptyMessage = document.createElement("p");
 emptyMessage.textContent = "Start playing to have items!";
 emptyMessage.classList.add("highlightText");
+emptyMessage.style.fontFamily = "MinecraftSeven";
 let OriginalgameContainer;
 let itemsCounter = {};
 let selectedTool = undefined;
@@ -30,6 +31,12 @@ box.addEventListener("click", () => {
 });
 
 function resetGame() {
+  tools.forEach((tool) => {
+    tool.classList.remove("active");
+  });
+  items.forEach((tool) => {
+    tool.classList.remove("active");
+  });
   items = [...itemsContainer.children];
   gameContainer.innerHTML = OriginalgameContainer;
   items.forEach((item) => {
@@ -93,6 +100,7 @@ function addItemToBox(tile) {
 
   items.forEach((item) => {
     item.addEventListener("click", () => {
+      document.body.style.cursor = `auto`;
       if (item.getAttribute("count") > 0) {
         items.forEach((tool) => {
           tool.classList.remove("active");
@@ -103,6 +111,7 @@ function addItemToBox(tile) {
         item.classList.add("active");
         const type = item.getAttribute("type");
         selectedTool = undefined;
+        document.body.style.cursor = `url(./assets/cursors/${item.id}.png), auto`;
 
         itemData.selectedItem = item.id;
         itemData.itemType = type;
@@ -116,6 +125,7 @@ function removeItemFromBox(item) {
 
   if (itemsCounter[item.id] <= 0) {
     itemsCounter[item.id] = 0;
+    document.body.style.cursor = `auto`;
     itemsContainer.removeChild(item);
     items = items.filter((item) => item.id !== item.id);
 
@@ -160,6 +170,14 @@ function tileClickEvent(tile) {
 
     tile.classList.remove("stone");
     tile.classList.add("sky");
+  } else if (selectedTool === "sword" && tile.classList.contains("monster")) {
+    addItemToBox(tile);
+
+    while (tile.attributes.length > 1) {
+      tile.removeAttribute(tile.attributes[1].name);
+    }
+    tile.classList.remove("monster");
+    tile.classList.add("sky");
   }
 }
 
@@ -201,6 +219,11 @@ function skyClickEvent(newTile) {
         case "soil":
           newTile.classList.add("soil");
           newTile.setAttribute("soil-type", itemData.selectedItem);
+          break;
+
+        case "monster":
+          newTile.classList.add("monster");
+          newTile.setAttribute("monster-type", itemData.selectedItem);
           break;
       }
     }

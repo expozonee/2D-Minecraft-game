@@ -17,7 +17,6 @@
 }
 
 body {
-  cursor: url(./assets/cursors/cursor.cur), auto;
   font-family: "MinecraftSeven";
 }
 
@@ -111,6 +110,14 @@ button:active {
   background-image: url(./assets/leaves1.png);
 }
 
+.monster[monster-type="creeper-body"] {
+  background-image: url(./assets/creeperBody.png);
+}
+
+.monster[monster-type="creeper-face"] {
+  background-image: url(./assets/creeperFace.png);
+}
+
 #reset-game {
   position: absolute;
   bottom: 50%;
@@ -172,7 +179,7 @@ button:active {
   background-image: url("/assets/buttons/button.png");
   display: none;
   grid-template-columns: repeat(5, 75px);
-  grid-template-rows: repeat(3, 75px);
+  grid-template-rows: repeat(4, 75px);
   gap: 20px;
   position: absolute;
 }
@@ -243,7 +250,7 @@ button:active {
   background-size: cover;
 }
 
-#spyglass {
-  background-image: url(./assets/spyglass.png);
+#sword {
+  background-image: url(./assets/sword.png);
   background-size: cover;
 }

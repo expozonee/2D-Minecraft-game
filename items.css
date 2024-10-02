@@ -70,6 +70,14 @@
   background-image: url(./assets/redstone.jpeg);
 }
 
+#creeper-face {
+  background-image: url(./assets/creeperFace.png);
+}
+
+#creeper-body {
+  background-image: url(./assets/creeperBody.png);
+}
+
 .item {
   width: 100%;
   height: 100%;
