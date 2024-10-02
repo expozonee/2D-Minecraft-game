@@ -231,6 +231,10 @@ button:active {
   border-radius: 10px;
 }
 
+#tools > *:hover {
+  border: 1px solid white;
+}
+
 #tools-container .tools {
   flex-grow: 1;
 }

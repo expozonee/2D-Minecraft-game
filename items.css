@@ -85,6 +85,10 @@
   position: relative;
 }
 
+.item:hover {
+  border: 1px solid white;
+}
+
 .item::after {
   content: attr(count);
   color: white;
