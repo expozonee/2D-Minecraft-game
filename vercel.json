@@ -36,11 +36,11 @@
       "dest": "/scripts/$1"
     },
     {
-      "src": "/(.*)",
+      "src": "/",
       "dest": "/home.html"
     },
     {
-      "src": "/game.html",
+      "src": "/game",
       "dest": "/game.html"
     }
   ]
