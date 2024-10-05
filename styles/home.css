@@ -63,7 +63,16 @@ button {
   width: 100%;
   height: 3rem;
   background-image: url(/assets/buttons/button.png);
+  border-color: #aaa #565656 #565656 #aaa;
   color: white;
+}
+
+button:active {
+  border-color: #565656 #aaa #aaa #565656;
+}
+
+button:hover {
+  cursor: url(../assets/cursors/pickaxe.cur), auto;
 }
 
 .info {

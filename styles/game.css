@@ -21,7 +21,6 @@ body {
 }
 
 button {
-  cursor: url(../assets/cursors/cursor.cur), auto;
   font-family: "MinecraftSeven";
   border: 2px solid;
   border-color: #aaa #565656 #565656 #aaa;
@@ -30,7 +29,6 @@ button {
 }
 
 button:hover {
-  cursor: url(./assets/cursors/cursor.cur), auto;
   background-image: url("./assets/buttons/hover.png");
 }
 
