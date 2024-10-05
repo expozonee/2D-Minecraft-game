@@ -38,6 +38,10 @@
     {
       "src": "/(.*)",
       "dest": "/home.html"
+    },
+    {
+      "src": "/game",
+      "dest": "/game.html"
     }
   ]
 }
