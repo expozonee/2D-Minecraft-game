@@ -171,8 +171,6 @@ function tileClickEvent(tile) {
     tile.classList.remove("stone");
     tile.classList.add("sky");
   } else if (selectedTool === "sword" && tile.classList.contains("monster")) {
-    addItemToBox(tile);
-
     while (tile.attributes.length > 1) {
       tile.removeAttribute(tile.attributes[1].name);
     }
