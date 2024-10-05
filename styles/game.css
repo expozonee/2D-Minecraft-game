@@ -1,11 +1,11 @@
 @font-face {
   font-family: "MinecraftSeven";
-  src: url("/assets/fonts/MinecraftSeven.ttf");
+  src: url("../assets/fonts/MinecraftSeven.ttf");
 }
 
 @font-face {
   font-family: "MinecraftTen";
-  src: url("/assets/fonts/minecraftTen.ttf");
+  src: url("../assets/fonts/minecraftTen.ttf");
 }
 
 *,
@@ -21,11 +21,11 @@ body {
 }
 
 button {
-  cursor: url(./assets/cursors/cursor.cur), auto;
+  cursor: url(../assets/cursors/cursor.cur), auto;
   font-family: "MinecraftSeven";
   border: 2px solid;
   border-color: #aaa #565656 #565656 #aaa;
-  background-image: url("./assets/buttons/button.png");
+  background-image: url("../assets/buttons/button.png");
   outline: 1px solid black;
 }
 
@@ -39,83 +39,83 @@ button:active {
 }
 
 .grass[grass-type="grass1"] {
-  background-image: url(./assets/grass1.png);
+  background-image: url(../assets/grass1.png);
 }
 
 .grass[grass-type="grass2"] {
-  background-image: url(./assets/grass2.png);
+  background-image: url(../assets/grass2.png);
 }
 
 .grass[grass-type="grass3"] {
-  background-image: url(./assets/grass3.png);
+  background-image: url(../assets/grass3.png);
 }
 
 .grass[grass-type="grass4"] {
-  background-image: url(./assets/grass4.png);
+  background-image: url(../assets/grass4.png);
 }
 
 .grass[grass-type="grass5"] {
-  background-image: url(./assets/grass5.png);
+  background-image: url(../assets/grass5.png);
 }
 
 .soil[soil-type="soil1"] {
-  background-image: url(./assets/soil1.png);
+  background-image: url(../assets/soil1.png);
 }
 
 .soil[soil-type="soil2"] {
-  background-image: url(./assets/soil2.png);
+  background-image: url(../assets/soil2.png);
 }
 
 .soil[soil-type="soil3"] {
-  background-image: url(./assets/soil3.png);
+  background-image: url(../assets/soil3.png);
 }
 
 .soil[soil-type="soil4"] {
-  background-image: url(./assets/soil4.png);
+  background-image: url(../assets/soil4.png);
 }
 
 .soil[soil-type="soil5"] {
-  background-image: url(./assets/soil5.png);
+  background-image: url(../assets/soil5.png);
 }
 
 .stone[stone-type="stone1"] {
-  background-image: url(./assets/Stone1.jpg);
+  background-image: url(../assets/Stone1.jpg);
 }
 
 .stone[stone-type="coal"] {
-  background-image: url(./assets/coal.png);
+  background-image: url(../assets/coal.png);
 }
 
 .stone[stone-type="diamond"] {
-  background-image: url(./assets/diamond.png);
+  background-image: url(../assets/diamond.png);
 }
 
 .stone[stone-type="gold"] {
-  background-image: url(./assets/gold.png);
+  background-image: url(../assets/gold.png);
 }
 
 .stone[stone-type="iron"] {
-  background-image: url(./assets/Iron.jpg);
+  background-image: url(../assets/Iron.jpg);
 }
 
 .stone[stone-type="redstone"] {
-  background-image: url(./assets/redstone.jpeg);
+  background-image: url(../assets/redstone.jpeg);
 }
 
 .wood[wood-type="wood1"] {
-  background-image: url(./assets/wood1.png);
+  background-image: url(../assets/wood1.png);
 }
 
 .leaves[leaves-type="leaves1"] {
-  background-image: url(./assets/leaves1.png);
+  background-image: url(../assets/leaves1.png);
 }
 
 .monster[monster-type="creeper-body"] {
-  background-image: url(./assets/creeperBody.png);
+  background-image: url(../assets/creeperBody.png);
 }
 
 .monster[monster-type="creeper-face"] {
-  background-image: url(./assets/creeperFace.png);
+  background-image: url(../assets/creeperFace.png);
 }
 
 #reset-game {
@@ -135,20 +135,9 @@ button:active {
   background-color: rgb(18, 32, 32);
   display: flex;
   flex-direction: column;
-  /* gap: 100px; */
   justify-content: flex-start;
   align-items: center;
 }
-
-/* #game-container {
-  --columns: 30;
-  --rows: 15;
-  --gap: 0px;
-  background-color: black;
-  display: grid;
-  grid-template-columns: repeat(30, 40px);
-  grid-template-rows: repeat(15, 40px);
-} */
 
 #game-container {
   --columns: 30;
@@ -220,7 +209,7 @@ button:active {
 .box {
   width: 100px;
   height: 100px;
-  background-image: url(./assets/box.png);
+  background-image: url(../assets/box.png);
   background-size: cover;
 }
 
@@ -240,21 +229,21 @@ button:active {
 }
 
 #axe {
-  background-image: url(./assets/axe.png);
+  background-image: url(../assets/axe.png);
   background-size: cover;
 }
 
 #shovel {
-  background-image: url(./assets/shovel.png);
+  background-image: url(../assets/shovel.png);
   background-size: cover;
 }
 
 #pickaxe {
-  background-image: url(./assets/pickaxe.png);
+  background-image: url(../assets/pickaxe.png);
   background-size: cover;
 }
 
 #sword {
-  background-image: url(./assets/sword.png);
+  background-image: url(../assets/sword.png);
   background-size: cover;
 }
