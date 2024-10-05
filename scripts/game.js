@@ -2,13 +2,13 @@ const mainContainer = document.querySelector("#main-container");
 const gameContainer = document.querySelector("#game-container");
 const tiles = document.querySelectorAll(".fraction > *:not(.sky)");
 const tools = document.querySelectorAll("#tools > *");
-const items = document.querySelectorAll("#items > *");
 const resetGameButton = document.querySelector("#reset-game");
 const box = document.querySelector(".box");
 const itemsContainer = document.querySelector("#items");
 const emptyMessage = document.createElement("p");
 emptyMessage.textContent = "Start playing to have items!";
 emptyMessage.classList.add("highlightText");
+emptyMessage.style.fontFamily = "MinecraftSeven";
 let OriginalgameContainer;
 let itemsCounter = {};
 let selectedTool = undefined;
@@ -16,13 +16,11 @@ let itemData = {
   selectedItem: undefined,
   itemType: undefined,
 };
+let items = [...itemsContainer.children];
 
 document.addEventListener("DOMContentLoaded", () => {
   OriginalgameContainer = gameContainer.innerHTML;
 
-  items.forEach((item) => {
-    itemsCounter[item.id] = 0;
-  });
   itemsContainer.append(emptyMessage);
   itemsContainer.classList.add("empty");
 });
@@ -33,12 +31,18 @@ box.addEventListener("click", () => {
 });
 
 function resetGame() {
+  tools.forEach((tool) => {
+    tool.classList.remove("active");
+  });
+  items.forEach((tool) => {
+    tool.classList.remove("active");
+  });
+  items = [...itemsContainer.children];
   gameContainer.innerHTML = OriginalgameContainer;
   items.forEach((item) => {
     item.setAttribute("count", "0");
-  });
-  items.forEach((item) => {
     itemsCounter[item.id] = 0;
+    removeItemFromBox(item);
   });
 }
 
@@ -57,14 +61,12 @@ function toolClick(tool) {
   tool.classList.add("active");
   itemData.selectedItem = undefined;
   selectedTool = tool.id;
+  document.body.style.cursor = `url(./assets/cursors/${tool.id}.cur), auto`;
 }
 
 function addCount(tile) {
   const attValue = tile.attributes[1].value;
   const item = document.getElementById(attValue);
-  if (!itemsCounter[item.id]) {
-    itemsCounter[item.id] = 0;
-  }
   itemsCounter[item.id] += 1;
   item.setAttribute("count", itemsCounter[item.id]);
 }
@@ -73,12 +75,13 @@ function addItemToBox(tile) {
   if (itemsContainer.contains(emptyMessage)) {
     itemsContainer.removeChild(emptyMessage);
     itemsContainer.classList.remove("empty");
+    itemsContainer.classList.add("items-active");
   }
 
-  const items = [...itemsContainer.children];
   const itemToCheck = items.find(
     (item) => item.id === tile.attributes[1].value
   );
+
   if (itemToCheck) {
     addCount(tile);
   } else {
@@ -88,11 +91,16 @@ function addItemToBox(tile) {
     item.setAttribute("type", tile.attributes[0].value);
     item.id = tile.attributes[1].value;
     itemsContainer.appendChild(item);
+    if (!itemsCounter[item.id]) {
+      itemsCounter[item.id] = 0;
+    }
     addCount(tile);
+    items.push(item);
   }
 
   items.forEach((item) => {
     item.addEventListener("click", () => {
+      document.body.style.cursor = `auto`;
       if (item.getAttribute("count") > 0) {
         items.forEach((tool) => {
           tool.classList.remove("active");
@@ -103,6 +111,7 @@ function addItemToBox(tile) {
         item.classList.add("active");
         const type = item.getAttribute("type");
         selectedTool = undefined;
+        document.body.style.cursor = `url(./assets/cursors/${item.id}.png), auto`;
 
         itemData.selectedItem = item.id;
         itemData.itemType = type;
@@ -113,8 +122,12 @@ function addItemToBox(tile) {
 
 function removeItemFromBox(item) {
   itemsCounter[item.id] -= 1;
-  if (itemsCounter[item.id] === 0) {
+
+  if (itemsCounter[item.id] <= 0) {
+    itemsCounter[item.id] = 0;
+    document.body.style.cursor = `auto`;
     itemsContainer.removeChild(item);
+    items = items.filter((item) => item.id !== item.id);
 
     if (itemsContainer.children.length === 0) {
       itemsContainer.append(emptyMessage);
@@ -123,6 +136,7 @@ function removeItemFromBox(item) {
   } else {
     item.setAttribute("count", itemsCounter[item.id]);
   }
+  console.log(itemsCounter);
 }
 
 function tileClickEvent(tile) {
@@ -156,6 +170,12 @@ function tileClickEvent(tile) {
 
     tile.classList.remove("stone");
     tile.classList.add("sky");
+  } else if (selectedTool === "sword" && tile.classList.contains("monster")) {
+    while (tile.attributes.length > 1) {
+      tile.removeAttribute(tile.attributes[1].name);
+    }
+    tile.classList.remove("monster");
+    tile.classList.add("sky");
   }
 }
 
@@ -164,7 +184,6 @@ function skyClickEvent(newTile) {
     const item = document.getElementById(itemData.selectedItem);
     if (item.getAttribute("count") > 0) {
       removeItemFromBox(item);
-      // removeEmptyItems();
 
       newTile.classList.remove("sky");
 
@@ -199,6 +218,11 @@ function skyClickEvent(newTile) {
           newTile.classList.add("soil");
           newTile.setAttribute("soil-type", itemData.selectedItem);
           break;
+
+        case "monster":
+          newTile.classList.add("monster");
+          newTile.setAttribute("monster-type", itemData.selectedItem);
+          break;
       }
     }
   }
@@ -211,47 +235,3 @@ gameContainer.addEventListener("click", (e) => {
     tileClickEvent(e.target);
   }
 });
-
-items.forEach((item) => {
-  item.addEventListener("click", () => {
-    if (item.getAttribute("count") > 0) {
-      items.forEach((tool) => {
-        tool.classList.remove("active");
-      });
-      tools.forEach((tool) => {
-        tool.classList.remove("active");
-      });
-      item.classList.add("active");
-      const type = item.getAttribute("type");
-      selectedTool = undefined;
-
-      itemData.selectedItem = item.id;
-      itemData.itemType = type;
-    }
-  });
-});
-
-// const emptyMessage = document.createElement("p");
-// emptyMessage.textContent = "Start playing to have items!";
-// emptyMessage.classList.add("highlightText");
-
-// function removeEmptyItems() {
-//   if (Object.values(itemsCounter).every((value) => value === 0)) {
-//     itemsContainer.append(emptyMessage);
-//     itemsContainer.classList.add("empty");
-//     itemsContainer.classList.add("hide");
-//   } else {
-//     if (itemsContainer.contains(emptyMessage)) {
-//       itemsContainer.removeChild(emptyMessage);
-//       itemsContainer.classList.remove("empty");
-//     }
-//   }
-
-//   items.forEach((item) => {
-//     if (itemsCounter[item.id] === 0) {
-//       item.classList.add("hide");
-//     } else {
-//       item.classList.remove("hide");
-//     }
-//   });
-// }

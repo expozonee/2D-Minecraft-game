@@ -4,8 +4,7 @@
 
 #items.items-active {
   display: grid;
-  position: fixed;
-  left: 10%;
+  left: 5%;
   bottom: 50px;
 }
 
@@ -17,9 +16,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
   left: 15%;
-  bottom: 200px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #items.empty.hide {

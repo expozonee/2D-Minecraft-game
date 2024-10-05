@@ -1,0 +1,249 @@
+@font-face {
+  font-family: "MinecraftSeven";
+  src: url("../assets/fonts/MinecraftSeven.ttf");
+}
+
+@font-face {
+  font-family: "MinecraftTen";
+  src: url("../assets/fonts/minecraftTen.ttf");
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "MinecraftSeven";
+}
+
+button {
+  cursor: url(../assets/cursors/cursor.cur), auto;
+  font-family: "MinecraftSeven";
+  border: 2px solid;
+  border-color: #aaa #565656 #565656 #aaa;
+  background-image: url("../assets/buttons/button.png");
+  outline: 1px solid black;
+}
+
+button:hover {
+  cursor: url(./assets/cursors/cursor.cur), auto;
+  background-image: url("./assets/buttons/hover.png");
+}
+
+button:active {
+  border-color: #565656 #aaa #aaa #565656;
+}
+
+.grass[grass-type="grass1"] {
+  background-image: url(../assets/grass1.png);
+}
+
+.grass[grass-type="grass2"] {
+  background-image: url(../assets/grass2.png);
+}
+
+.grass[grass-type="grass3"] {
+  background-image: url(../assets/grass3.png);
+}
+
+.grass[grass-type="grass4"] {
+  background-image: url(../assets/grass4.png);
+}
+
+.grass[grass-type="grass5"] {
+  background-image: url(../assets/grass5.png);
+}
+
+.soil[soil-type="soil1"] {
+  background-image: url(../assets/soil1.png);
+}
+
+.soil[soil-type="soil2"] {
+  background-image: url(../assets/soil2.png);
+}
+
+.soil[soil-type="soil3"] {
+  background-image: url(../assets/soil3.png);
+}
+
+.soil[soil-type="soil4"] {
+  background-image: url(../assets/soil4.png);
+}
+
+.soil[soil-type="soil5"] {
+  background-image: url(../assets/soil5.png);
+}
+
+.stone[stone-type="stone1"] {
+  background-image: url(../assets/Stone1.jpg);
+}
+
+.stone[stone-type="coal"] {
+  background-image: url(../assets/coal.png);
+}
+
+.stone[stone-type="diamond"] {
+  background-image: url(../assets/diamond.png);
+}
+
+.stone[stone-type="gold"] {
+  background-image: url(../assets/gold.png);
+}
+
+.stone[stone-type="iron"] {
+  background-image: url(../assets/Iron.jpg);
+}
+
+.stone[stone-type="redstone"] {
+  background-image: url(../assets/redstone.jpeg);
+}
+
+.wood[wood-type="wood1"] {
+  background-image: url(../assets/wood1.png);
+}
+
+.leaves[leaves-type="leaves1"] {
+  background-image: url(../assets/leaves1.png);
+}
+
+.monster[monster-type="creeper-body"] {
+  background-image: url(../assets/creeperBody.png);
+}
+
+.monster[monster-type="creeper-face"] {
+  background-image: url(../assets/creeperFace.png);
+}
+
+#reset-game {
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(50%);
+  right: 50px;
+  width: 200px;
+  height: 50px;
+  background-color: brown;
+  color: white;
+}
+
+#main-container {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(18, 32, 32);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#game-container {
+  --columns: 30;
+  --rows: 15;
+  --gap: 0px;
+  background-color: black;
+  display: grid;
+  width: 100%;
+  height: 80vh;
+  grid-template-columns: repeat(auto-fill, calc(100vw / 40));
+  grid-template-rows: repeat(auto-fill, calc(100% / 25));
+}
+
+#tools-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  height: 20vh;
+  position: relative;
+  width: 100%;
+}
+
+#items {
+  padding: 2rem;
+  border-radius: 5px;
+  background-color: rgb(68, 68, 68);
+  background-image: url("/assets/buttons/button.png");
+  display: none;
+  grid-template-columns: repeat(5, 75px);
+  grid-template-rows: repeat(4, 75px);
+  gap: 20px;
+  position: absolute;
+}
+
+.fraction {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 25;
+  gap: var(--gap);
+}
+
+.fraction > * {
+  background-size: cover;
+}
+
+.fraction > *:hover {
+  border: 2px solid white;
+}
+
+.sky {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(156, 233, 233);
+}
+
+.ground {
+  width: 100%;
+  height: 100%;
+  --gap: 2px;
+}
+
+#tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  background-image: url(../assets/box.png);
+  background-size: cover;
+}
+
+#tools > * {
+  width: 60px;
+  height: 60px;
+  background-color: rgb(68, 68, 68);
+  border-radius: 10px;
+}
+
+#tools > *:hover {
+  border: 1px solid white;
+}
+
+#tools-container .tools {
+  flex-grow: 1;
+}
+
+#axe {
+  background-image: url(../assets/axe.png);
+  background-size: cover;
+}
+
+#shovel {
+  background-image: url(../assets/shovel.png);
+  background-size: cover;
+}
+
+#pickaxe {
+  background-image: url(../assets/pickaxe.png);
+  background-size: cover;
+}
+
+#sword {
+  background-image: url(../assets/sword.png);
+  background-size: cover;
+}
