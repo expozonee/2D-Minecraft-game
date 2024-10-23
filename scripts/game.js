@@ -18,6 +18,48 @@ let itemData = {
 };
 let items = [...itemsContainer.children];
 
+// tile types
+const grassTypes = ["grass1", "grass2", "grass3", "grass4", "grass5"];
+const soilTypes = ["soil1", "soil2", "soil3", "soil4", "soil5"];
+const stoneTypes = ["coal", "redstone", "iron", "gold", "diamond", "stone1"];
+const leavesTypes = ["leaves1"];
+const woodTypes = ["wood1"];
+
+//
+
+function randomTile(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function createGameGrid() {
+  for (let j = 0; j < 40; j++) {
+    const fraction = document.createElement("div");
+    fraction.classList.add("fraction");
+    for (let i = 0; i < 25; i++) {
+      const tile = document.createElement("div");
+      if (i < 16) {
+        tile.classList.add("sky");
+        fraction.appendChild(tile);
+      } else if (i === 16) {
+        tile.classList.add("grass");
+        tile.setAttribute("grass-type", randomTile(grassTypes));
+        fraction.appendChild(tile);
+      } else if (i < 20) {
+        tile.classList.add("soil");
+        tile.setAttribute("soil-type", randomTile(soilTypes));
+        fraction.appendChild(tile);
+      } else {
+        tile.classList.add("stone");
+        tile.setAttribute("stone-type", randomTile(stoneTypes));
+        fraction.appendChild(tile);
+      }
+    }
+    gameContainer.appendChild(fraction);
+  }
+}
+
+createGameGrid();
+
 document.addEventListener("DOMContentLoaded", () => {
   OriginalgameContainer = gameContainer.innerHTML;
 
